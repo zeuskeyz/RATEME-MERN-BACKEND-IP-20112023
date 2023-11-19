@@ -1,7 +1,6 @@
 const { Schema, model } = require ('mongoose')
 
 const customerSchema = new Schema({
-        number: {type: Number, required:true},
         type : {type: String, required:true, lowecase:true},
         date : {type: Date, default: Date.now}
 }, {timestamps:true})

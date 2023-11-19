@@ -4,7 +4,6 @@ const Customer = require('../models/Customer')
 
 router.post('/', async (req,res)=>{
     let feedback = new Customer(req.body);
-    console.log(feedback)
     await feedback.save()
 })
 
@@ -20,7 +19,6 @@ router.get('/', async (req,res)=>{
     responses.forEach(response=> count[response] = (count[response] || 0) + 1)
     let NPS = (100*(count.promoter - count.detractor)/responses.length).toFixed(2)
 
-    console.log(count, responses.length, NPS)
     res.send({"NPS" : NPS})
 })
 
