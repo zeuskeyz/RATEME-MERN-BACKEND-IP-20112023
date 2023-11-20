@@ -8,16 +8,22 @@ router.post('/', async (req,res)=>{
 })
 
 router.get('/', async (req,res)=>{
+
     let feedbacks = await Customer.find()
     let responses = []
-    let count = {}
+    let count = {promoter:0,detractor:0, passive:0}
+
     feedbacks.forEach(feedback=>{
         let compDate = new Date().toISOString().split('T')[0]
         let feedDate = feedback.date.toISOString().split('T')[0]
         compDate === feedDate ? responses.push(feedback.type) : responses=responses
     })
+
     responses.forEach(response=> count[response] = (count[response] || 0) + 1)
+
     let NPS = (100*(count.promoter - count.detractor)/responses.length).toFixed(2)
+    
+    console.log(NPS, count.promoter, count.detractor, responses.length, count )
 
     res.send({"NPS" : NPS})
 })
