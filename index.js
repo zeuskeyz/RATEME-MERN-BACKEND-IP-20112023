@@ -16,4 +16,4 @@ app.use(express.urlencoded({extended:false}))
 app.use('/', customerRoutes)
 
 //CUSTOM MIDDLEWARES
-app.listen(process.env.PORT, ()=>{console.log(`\nSERVER RUNNING ON ${process.env.PORT}`); connection()} )
+app.listen(process.env.PORT, ()=>{console.log(`\nSERVER RUNNING`); connection()} )

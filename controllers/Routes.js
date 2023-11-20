@@ -22,8 +22,6 @@ router.get('/', async (req,res)=>{
     responses.forEach(response=> count[response] = (count[response] || 0) + 1)
 
     let NPS = (100*(count.promoter - count.detractor)/responses.length).toFixed(2)
-    
-    console.log(NPS, count.promoter, count.detractor, responses.length, count )
 
     res.send({"NPS" : NPS})
 })
